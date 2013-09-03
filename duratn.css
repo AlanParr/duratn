@@ -1,10 +1,10 @@
 ﻿body {
 }
 
-span.duration-container {
+span.duratn-container {
     
 }
 
-span.duration-container input[type=number], span.duration-container select {
+span.duratn-container input[type=number], span.duratn-container select {
     width: 65px;
 }
