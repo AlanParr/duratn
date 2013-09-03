@@ -6,29 +6,29 @@ $.fn.duratn = function () {
 
     var originatingElement = this;
     var thisInstanceElementGuid = generateGuid();
-    var contId = 'jqDuration_' + thisInstanceElementGuid;
-    var daysId = 'jqDuration_days_' + thisInstanceElementGuid;
-    var hrsId = 'jqDuration_hrs_' + thisInstanceElementGuid;
-    var minsId = 'jqDuration_mins_' + thisInstanceElementGuid;
+    var contId = 'duratn_' + thisInstanceElementGuid;
+    var daysId = 'duratn_days_' + thisInstanceElementGuid;
+    var hrsId = 'duratn_hrs_' + thisInstanceElementGuid;
+    var minsId = 'duratn_mins_' + thisInstanceElementGuid;
 
-    var jqDurationContainer = $('<div>').attr({
+    var duratnContainer = $('<div>').attr({
         id: contId,
         name: contId
-    }).addClass("duration-container");
+    }).addClass("duratn-container");
 
     $('<input>').attr({
         type: 'number',
         id: daysId,
         name: daysId,
         placeholder: "days"
-    }).appendTo(jqDurationContainer);
+    }).appendTo(duratnContainer);
 
     $('<input>').attr({
         type: 'number',
         id: hrsId,
         name: hrsId,
         placeholder: "hrs"
-    }).appendTo(jqDurationContainer);
+    }).appendTo(duratnContainer);
 
     var mins = {
         '0': '0',
@@ -46,9 +46,9 @@ $.fn.duratn = function () {
     for (var val in mins) {
         $('<option />', { value: val, text: mins[val] + ' mins' }).appendTo(minsInput);
     }
-    minsInput.appendTo(jqDurationContainer);
+    minsInput.appendTo(duratnContainer);
 
-    jqDurationContainer.appendTo(container);
+    duratnContainer.appendTo(container);
 
     $('#' + daysId).bind("click", recalculate);
     $('#' + hrsId).bind("click", recalculate);
