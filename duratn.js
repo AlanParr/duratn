@@ -1,6 +1,6 @@
 ﻿(function($) {
 
-$.fn.jqDuration = function () {
+$.fn.duratn = function () {
     //Add 3 new controls for days,hrs,mins.
     var container = this.parent();
 
