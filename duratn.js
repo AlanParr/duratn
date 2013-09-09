@@ -21,14 +21,14 @@ $.fn.duratn = function () {
         id: daysId,
         name: daysId,
         placeholder: "days"
-    }).appendTo(duratnContainer);
+    }).addClass("ui-input-text").appendTo(duratnContainer);
 
     $('<input>').attr({
         type: 'number',
         id: hrsId,
         name: hrsId,
         placeholder: "hrs"
-    }).appendTo(duratnContainer);
+    }).addClass("ui-input-text").appendTo(duratnContainer);
 
     var mins = {
         '0': '0',
@@ -42,7 +42,7 @@ $.fn.duratn = function () {
         id: minsId,
         name: minsId,
         placeholder: "mins"
-    });
+    }).addClass("ui-input-text");
     for (var val in mins) {
         $('<option />', { value: val, text: mins[val] + ' mins' }).appendTo(minsInput);
     }
