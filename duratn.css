@@ -3,3 +3,10 @@
 .duratn-container input[type=number], .duratn-container select {
     width: 65px;
 }
+
+/*jq mobile*/
+
+.duratn-container input.ui-input-text {
+    width: 33% !important;
+    display: inline !important;
+}
