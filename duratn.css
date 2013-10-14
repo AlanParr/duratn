@@ -2,6 +2,7 @@
 
 .duratn-container input[type=number], .duratn-container select {
     width: 65px;
+    margin-right: 3px;
 }
 
 /*jq mobile*/
