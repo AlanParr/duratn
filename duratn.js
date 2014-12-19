@@ -11,6 +11,9 @@ $.fn.duratn = function () {
     var hrsId = 'duratn_hrs_' + thisInstanceElementGuid;
     var minsId = 'duratn_mins_' + thisInstanceElementGuid;
 
+    var minutesInADay = 480;
+    var minutesInAnHour = 60;
+
     var duratnContainer = $('<div>').attr({
         id: contId,
         name: contId
@@ -50,12 +53,14 @@ $.fn.duratn = function () {
 
     duratnContainer.appendTo(container);
 
-    $('#' + daysId).bind("click", recalculate);
-    $('#' + hrsId).bind("click", recalculate);
-    $('#' + minsId).bind("click", recalculate);
+    $("[id*=" + thisInstanceElementGuid + "][type=number]").on("change keyup paste click", function () {
+        recalculate();
+    })
 
     //Hide this
     this.hide();
+
+    populateControls();
 
     return this;
 
@@ -67,11 +72,27 @@ $.fn.duratn = function () {
         return result;
     }
     
+    function populateControls() {
+        if ($(originatingElement).val() != "") {
+            var totalValue = parseInt($(originatingElement).val());
+            
+            var days = parseInt(totalValue / minutesInADay);
+            $('#' + daysId).val(days);
+            totalValue = totalValue - (days * minutesInADay);
+
+            var hours = parseInt(totalValue / minutesInAnHour);
+            $('#' + hrsId).val(hours);
+            totalValue = totalValue - (hours * minutesInAnHour);
+
+            $('#' + minsId).val(totalValue);
+        }
+    }
+
     function recalculate(event) {
         var vals = new Array();
         
-        if ($('#' + daysId).val() != "") { vals.push(parseInt($('#' + daysId).val() * 480));}
-        if ($('#' + hrsId).val() != "") { vals.push(parseInt($('#' + hrsId).val() * 60)); }
+        if ($('#' + daysId).val() != "") { vals.push(parseInt($('#' + daysId).val() * minutesInADay)); }
+        if ($('#' + hrsId).val() != "") { vals.push(parseInt($('#' + hrsId).val() * minutesInAnHour)); }
         if ($('#' + minsId).val() != "") { vals.push(parseInt($('#' + minsId).val())); }
         
         var result = vals.reduce(function (previousValue, currentValue) {
